@@ -55,32 +55,35 @@ export default function Network() {
     () => {
       gsap.set(".net-device", { opacity: 0.28 });
       gsap.set(".net-light", { fill: "#e5322d", opacity: 0 });
-      gsap.set(".net-step", { opacity: 0.3 });
+      // No celular os passos ficam sempre acesos; o destaque passo a passo é só no desktop.
+      const mobile = window.matchMedia("(max-width: 1023px)").matches;
+      const step = (n: number) => (mobile ? {} : `.net-step-${n}`);
+      if (!mobile) gsap.set(".net-step", { opacity: 0.3 });
       gsap.set(".net-waves", { opacity: 0, scale: 0.6, svgOrigin: "300 340" });
       gsap.set(".net-packet", { opacity: 0 });
 
       const tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
 
-      tl.to(".net-step-1", { opacity: 1, duration: 0.3 })
+      tl.to(step(1), { opacity: 1, duration: 0.3 })
         .to(".net-router", { opacity: 1, duration: 0.4 }, "<")
         .to(".net-light-a", { opacity: 1, duration: 0.2 }, "<")
         // Roteador → switch
-        .to(".net-step-1", { opacity: 0.3, duration: 0.2 }, "+=0.3")
-        .to(".net-step-2", { opacity: 1, duration: 0.2 }, "<")
+        .to(step(1), { opacity: 0.3, duration: 0.2 }, "+=0.3")
+        .to(step(2), { opacity: 1, duration: 0.2 }, "<")
         .to(".net-cable-1", { strokeDashoffset: 0, duration: 1 }, "<")
         .to(".net-light-b", { opacity: 1, duration: 0.15 }, "<0.1")
         .to(".net-light-a, .net-light-b", { fill: "#2bc24a", duration: 0.2 })
         .to(".net-switch", { opacity: 1, duration: 0.3 }, "<")
         // Switch → access point
-        .to(".net-step-2", { opacity: 0.3, duration: 0.2 }, "+=0.2")
-        .to(".net-step-3", { opacity: 1, duration: 0.2 }, "<")
+        .to(step(2), { opacity: 0.3, duration: 0.2 }, "+=0.2")
+        .to(step(3), { opacity: 1, duration: 0.2 }, "<")
         .to(".net-light-c", { opacity: 1, duration: 0.15 }, "<")
         .to(".net-cable-2", { strokeDashoffset: 0, duration: 1 }, "<")
         .to(".net-light-c", { fill: "#2bc24a", duration: 0.2 })
         .to(".net-ap", { opacity: 1, duration: 0.3 }, "<")
         // Wi-Fi até os aparelhos
-        .to(".net-step-3", { opacity: 0.3, duration: 0.2 }, "+=0.2")
-        .to(".net-step-4", { opacity: 1, duration: 0.2 }, "<")
+        .to(step(3), { opacity: 0.3, duration: 0.2 }, "+=0.2")
+        .to(step(4), { opacity: 1, duration: 0.2 }, "<")
         .to(".net-waves", { opacity: 1, scale: 1, duration: 0.5 }, "<")
         .to(".net-wifi", { strokeDashoffset: 0, duration: 1, stagger: 0.25 }, "<0.2")
         .to(".net-end", { opacity: 1, duration: 0.3, stagger: 0.25 }, "<0.5")
