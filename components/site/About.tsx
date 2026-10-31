@@ -72,18 +72,6 @@ export default function About() {
               {experience.role}
             </h3>
             <p className="mt-1 font-semibold text-[var(--accent)]">{experience.place}</p>
-            <p className="mt-4 max-w-[56ch] text-muted">{experience.summary}</p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {experience.tasks.map((t) => (
-                <li key={t} className="flex gap-3 text-[0.95rem] leading-snug">
-                  <svg viewBox="0 0 20 20" className="mt-0.5 size-5 shrink-0 text-[var(--accent)]" aria-hidden="true">
-                    <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.18" />
-                    <path d="M6 10.5l2.6 2.5L14 7.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {t}
-                </li>
-              ))}
-            </ul>
           </article>
         </div>
       </div>

@@ -48,19 +48,11 @@ export const profile = {
   },
 
   // Card de experiência no Sobre mim.
-  // TODO: confirme o período e as tarefas (escritas a partir do texto do Sobre).
+  // TODO: confirme o período.
   experience: {
     role: "Estagiário de Suporte de TI",
     place: "Colégio Rafael de Santo",
     period: "", // ex.: "2025 – 2026". Vazio, não aparece.
-    summary:
-      "Cuidava dos computadores da escola e de quem trabalha neles: do micro que não liga ao professor que precisa da sala pronta para a aula.",
-    tasks: [
-      "Manutenção, limpeza e troca de peças dos computadores",
-      "Atendimento a professores e funcionários no dia a dia",
-      "Rede, impressoras e internet funcionando nas salas e laboratórios",
-      "Instalação e configuração de sistemas e programas",
-    ],
   },
 
   contact: {
