@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
 // Topologia de rede no estilo Packet Tracer: Roteador → Switch 2960 → Access Point
 // → celular, tablet e notebook. Conforme a página rola, cada cabo se desenha, as
 // portas passam de vermelho para verde, o Wi-Fi conecta os aparelhos e, no fim,
-// pacotes começam a correr pelos cabos. No desktop a seção fica fixa durante a animação.
+// pacotes começam a correr pelos cabos. Acontece uma vez só, na primeira descida.
 
 const L = { pathLength: 1, strokeDasharray: 1, strokeDashoffset: 1 } as const;
 
@@ -52,59 +52,65 @@ export default function Network() {
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia();
+      gsap.set(".net-device", { opacity: 0.28 });
+      gsap.set(".net-light", { fill: "#e5322d", opacity: 0 });
+      gsap.set(".net-step", { opacity: 0.3 });
+      gsap.set(".net-waves", { opacity: 0, scale: 0.6, svgOrigin: "300 340" });
+      gsap.set(".net-packet", { opacity: 0 });
 
-      const build = (pin: boolean) => {
-        gsap.set(".net-device", { opacity: 0.28 });
-        gsap.set(".net-light", { fill: "#e5322d", opacity: 0 });
-        gsap.set(".net-step", { opacity: 0.3 });
-        gsap.set(".net-waves", { opacity: 0, scale: 0.6, svgOrigin: "300 340" });
-        gsap.set(".net-packet", { opacity: 0 });
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
 
-        const tl = gsap.timeline({
-          defaults: { ease: "none" },
-          scrollTrigger: pin
-            ? { trigger: root.current, start: "top top", end: "+=220%", scrub: 0.6, pin: true, anticipatePin: 1 }
-            : { trigger: ".net-stage", start: "top 75%", end: "bottom 55%", scrub: 0.6 },
-        });
+      tl.to(".net-step-1", { opacity: 1, duration: 0.3 })
+        .to(".net-router", { opacity: 1, duration: 0.4 }, "<")
+        .to(".net-light-a", { opacity: 1, duration: 0.2 }, "<")
+        // Roteador → switch
+        .to(".net-step-1", { opacity: 0.3, duration: 0.2 }, "+=0.3")
+        .to(".net-step-2", { opacity: 1, duration: 0.2 }, "<")
+        .to(".net-cable-1", { strokeDashoffset: 0, duration: 1 }, "<")
+        .to(".net-light-b", { opacity: 1, duration: 0.15 }, "<0.1")
+        .to(".net-light-a, .net-light-b", { fill: "#2bc24a", duration: 0.2 })
+        .to(".net-switch", { opacity: 1, duration: 0.3 }, "<")
+        // Switch → access point
+        .to(".net-step-2", { opacity: 0.3, duration: 0.2 }, "+=0.2")
+        .to(".net-step-3", { opacity: 1, duration: 0.2 }, "<")
+        .to(".net-light-c", { opacity: 1, duration: 0.15 }, "<")
+        .to(".net-cable-2", { strokeDashoffset: 0, duration: 1 }, "<")
+        .to(".net-light-c", { fill: "#2bc24a", duration: 0.2 })
+        .to(".net-ap", { opacity: 1, duration: 0.3 }, "<")
+        // Wi-Fi até os aparelhos
+        .to(".net-step-3", { opacity: 0.3, duration: 0.2 }, "+=0.2")
+        .to(".net-step-4", { opacity: 1, duration: 0.2 }, "<")
+        .to(".net-waves", { opacity: 1, scale: 1, duration: 0.5 }, "<")
+        .to(".net-wifi", { strokeDashoffset: 0, duration: 1, stagger: 0.25 }, "<0.2")
+        .to(".net-end", { opacity: 1, duration: 0.3, stagger: 0.25 }, "<0.5")
+        .to(".net-packet", { opacity: 1, duration: 0.3 })
+        .to({}, { duration: 0.4 });
 
-        tl.to(".net-step-1", { opacity: 1, duration: 0.3 })
-          .to(".net-router", { opacity: 1, duration: 0.4 }, "<")
-          .to(".net-light-a", { opacity: 1, duration: 0.2 }, "<")
-          // Roteador → switch
-          .to(".net-step-1", { opacity: 0.3, duration: 0.2 }, "+=0.3")
-          .to(".net-step-2", { opacity: 1, duration: 0.2 }, "<")
-          .to(".net-cable-1", { strokeDashoffset: 0, duration: 1 }, "<")
-          .to(".net-light-b", { opacity: 1, duration: 0.15 }, "<0.1")
-          .to(".net-light-a, .net-light-b", { fill: "#2bc24a", duration: 0.2 })
-          .to(".net-switch", { opacity: 1, duration: 0.3 }, "<")
-          // Switch → access point
-          .to(".net-step-2", { opacity: 0.3, duration: 0.2 }, "+=0.2")
-          .to(".net-step-3", { opacity: 1, duration: 0.2 }, "<")
-          .to(".net-light-c", { opacity: 1, duration: 0.15 }, "<")
-          .to(".net-cable-2", { strokeDashoffset: 0, duration: 1 }, "<")
-          .to(".net-light-c", { fill: "#2bc24a", duration: 0.2 })
-          .to(".net-ap", { opacity: 1, duration: 0.3 }, "<")
-          // Wi-Fi até os aparelhos
-          .to(".net-step-3", { opacity: 0.3, duration: 0.2 }, "+=0.2")
-          .to(".net-step-4", { opacity: 1, duration: 0.2 }, "<")
-          .to(".net-waves", { opacity: 1, scale: 1, duration: 0.5 }, "<")
-          .to(".net-wifi", { strokeDashoffset: 0, duration: 1, stagger: 0.25 }, "<0.2")
-          .to(".net-end", { opacity: 1, duration: 0.3, stagger: 0.25 }, "<0.5")
-          .to(".net-packet", { opacity: 1, duration: 0.3 })
-          .to({}, { duration: 0.4 });
-      };
-
-      mm.add("(min-width: 1024px)", () => build(true));
-      mm.add("(max-width: 1023px)", () => build(false));
+      // A montagem segue o scroll só para a frente e uma vez: rolar para cima não
+      // desfaz nada, e quando tudo conecta o gatilho é removido e a rede fica pronta.
+      let max = 0;
+      const st: ScrollTrigger = ScrollTrigger.create({
+        trigger: ".net-stage",
+        start: "top 80%",
+        end: "bottom 45%",
+        onUpdate: (self) => {
+          if (self.progress <= max) return;
+          max = self.progress;
+          gsap.to(tl, { progress: max, duration: 0.5, ease: "power1.out", overwrite: true });
+          if (max >= 0.999) st.kill();
+        },
+      });
+      // Quem chega já abaixo da seção (link direto, recarregar no meio) vê a rede montada.
+      if (st.progress >= 1) {
+        tl.progress(1);
+        st.kill();
+      }
 
       // Pacotes correndo pelos cabos (ficam visíveis só depois que tudo conecta).
       gsap.fromTo(".net-packet-1", { attr: { cy: 96 } }, { attr: { cy: 182 }, duration: 1.1, repeat: -1, ease: "none" });
       gsap.fromTo(".net-packet-2", { attr: { cy: 226 } }, { attr: { cy: 300 }, duration: 1.1, repeat: -1, ease: "none", delay: 0.55 });
       // As ondas pulsam por dentro do grupo; quem decide se aparecem é a timeline.
       gsap.to(".net-wave", { opacity: 0.3, duration: 1.2, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.3 });
-
-      return () => mm.revert();
     },
     { scope: root },
   );
@@ -114,7 +120,7 @@ export default function Network() {
       id="rede"
       ref={root}
       aria-labelledby="rede-tv"
-      className="tv-panel flex min-h-svh items-center px-gutter py-[clamp(80px,10vw,140px)] lg:py-16"
+      className="tv-panel flex items-center px-gutter py-[clamp(96px,12vw,200px)]"
     >
       <div className="tv-container grid items-center gap-x-[clamp(32px,5vw,80px)] gap-y-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
         <div>

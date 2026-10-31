@@ -9,7 +9,7 @@ import { useReveal } from "@/lib/useReveal";
 export default function About() {
   const root = useRef<HTMLElement>(null);
   useReveal(root);
-  const { about, photo } = profile;
+  const { about, photo, experience } = profile;
 
   return (
     <section
@@ -60,14 +60,31 @@ export default function About() {
             )}
           </p>
 
-          <dl data-reveal className="mt-12 grid gap-6 sm:grid-cols-3">
-            {about.facts.map((f) => (
-              <div key={f.label} className="rounded-[18px] bg-white/[0.04] p-4">
-                <dt className="tv-mono text-small text-muted">{f.label}</dt>
-                <dd className="mt-2 text-[1.25rem] font-bold leading-tight">{f.value}</dd>
-              </div>
-            ))}
-          </dl>
+          <article data-reveal className="mt-12 rounded-[22px] bg-white/[0.04] p-6 outline outline-1 outline-white/[0.06] sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="tv-label">
+                <span className="size-2 rounded-full bg-[var(--blue-2)]" aria-hidden="true" />
+                Experiência
+              </p>
+              {experience.period && <p className="tv-mono text-small text-muted">{experience.period}</p>}
+            </div>
+            <h3 className="mt-4 text-[clamp(1.375rem,1.1rem+0.8vw,1.75rem)] font-bold leading-tight">
+              {experience.role}
+            </h3>
+            <p className="mt-1 font-semibold text-[var(--accent)]">{experience.place}</p>
+            <p className="mt-4 max-w-[56ch] text-muted">{experience.summary}</p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {experience.tasks.map((t) => (
+                <li key={t} className="flex gap-3 text-[0.95rem] leading-snug">
+                  <svg viewBox="0 0 20 20" className="mt-0.5 size-5 shrink-0 text-[var(--accent)]" aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" fill="currentColor" opacity="0.18" />
+                    <path d="M6 10.5l2.6 2.5L14 7.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </article>
         </div>
       </div>
     </section>

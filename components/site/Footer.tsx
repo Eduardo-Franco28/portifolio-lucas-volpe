@@ -1,5 +1,4 @@
 import { profile } from "@/content/profile";
-import LocalClock from "@/components/ui/LocalClock";
 import Logo from "./Logo";
 
 const nav = [
@@ -26,7 +25,7 @@ export default function Footer() {
           <a href="#topo" className="inline-block text-lead">
             <Logo size="size-11" />
           </a>
-          <p className="mt-4 max-w-[36ch] text-[var(--muted)]">{profile.intro}</p>
+          <p className="mt-4 max-w-[36ch] text-[var(--muted)]">{profile.tagline}</p>
           <p className="tv-label mt-6">
             <span className="live-dot size-2 rounded-full bg-[var(--blue-2)]" aria-hidden="true" />
             {profile.status}
@@ -69,11 +68,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="tv-container mt-16 flex flex-wrap items-center justify-between gap-3 text-small text-[var(--muted)]">
-        <p>© 2026 {profile.name}. Feito em {profile.city}.</p>
-        <p className="tv-mono">
-          {profile.city} · <LocalClock timeZone={profile.timeZone} />
-        </p>
+      <div className="tv-container mt-16 text-small text-[var(--muted)]">
+        <p>© 2026 {profile.name}.</p>
       </div>
     </footer>
   );
