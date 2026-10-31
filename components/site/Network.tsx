@@ -93,6 +93,20 @@ export default function Network() {
       // A montagem segue o scroll só para a frente e uma vez: rolar para cima não
       // desfaz nada, e quando tudo conecta o gatilho é removido e a rede fica pronta.
       let max = 0;
+      // Depois de tudo conectado, ao rolar para cima todos os passos acendem,
+      // para a lista não ficar presa só no último.
+      const lightAllOnScrollUp = () => {
+        if (mobile) return;
+        const up: ScrollTrigger = ScrollTrigger.create({
+          start: 0,
+          end: "max",
+          onUpdate: (self) => {
+            if (self.direction !== -1) return;
+            gsap.to(".net-step", { opacity: 1, duration: 0.4, overwrite: true });
+            up.kill();
+          },
+        });
+      };
       const st: ScrollTrigger = ScrollTrigger.create({
         trigger: ".net-stage",
         start: "top 80%",
@@ -101,13 +115,17 @@ export default function Network() {
           if (self.progress <= max) return;
           max = self.progress;
           gsap.to(tl, { progress: max, duration: 0.5, ease: "power1.out", overwrite: true });
-          if (max >= 0.999) st.kill();
+          if (max >= 0.999) {
+            st.kill();
+            lightAllOnScrollUp();
+          }
         },
       });
       // Quem chega já abaixo da seção (link direto, recarregar no meio) vê a rede montada.
       if (st.progress >= 1) {
         tl.progress(1);
         st.kill();
+        if (!mobile) gsap.set(".net-step", { opacity: 1 });
       }
 
       // Pacotes correndo pelos cabos (ficam visíveis só depois que tudo conecta).
