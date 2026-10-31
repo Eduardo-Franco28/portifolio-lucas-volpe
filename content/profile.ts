@@ -32,9 +32,9 @@ export const profile = {
   about: {
     // Os trechos { mark } ganham destaque.
     body: [
-      "Sou o Lucas. Minha parte preferida da TI é o ",
+      "O que mais me prende na TI é o ",
       { mark: "hardware" },
-      ": abrir o gabinete, achar a peça com defeito e devolver a máquina ligando. Fiz ",
+      ": abrir o gabinete, achar a peça com defeito e ver a máquina ligar de novo. Fiz ",
       { mark: "estágio de suporte de TI" },
       " no ",
       { mark: "Colégio Rafael de Santo" },
@@ -53,8 +53,8 @@ export const profile = {
   },
 
   contact: {
-    title: "Tem uma vaga de suporte de TI?",
-    line: "Me manda os detalhes da vaga, ou do computador que parou, e eu te respondo por e-mail.",
+    title: "Precisa de alguém que mantenha tudo funcionando?",
+    line: "Me manda um e-mail contando o que você precisa. Também estou no LinkedIn e no GitHub.",
     // Assunto que já vem preenchido quando a pessoa clica em "Enviar e-mail".
     subject: "Contato pelo portfólio",
   },
