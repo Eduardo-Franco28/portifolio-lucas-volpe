@@ -4,6 +4,7 @@ import Hero from "@/components/site/Hero";
 import About from "@/components/site/About";
 import Programs from "@/components/site/Programs";
 import Skills from "@/components/site/Skills";
+import Network from "@/components/site/Network";
 import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
 import ScrollFX from "@/components/site/ScrollFX";
@@ -20,6 +21,7 @@ export default function Home() {
         <About />
         <Programs />
         <Skills />
+        <Network />
         <Contact />
       </main>
       <Footer />
