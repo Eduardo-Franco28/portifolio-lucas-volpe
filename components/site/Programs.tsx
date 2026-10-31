@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { projects, type DemoKind } from "@/content/projects";
 import { useReveal } from "@/lib/useReveal";
+import PcBuild from "./PcBuild";
 import AppDemo from "@/components/demos/AppDemo";
 import BotDemo from "@/components/demos/BotDemo";
 import RealtimeDemo from "@/components/demos/RealtimeDemo";
@@ -28,13 +29,13 @@ export default function Programs() {
       aria-labelledby="projetos-tv"
       className="px-gutter py-[clamp(96px,12vw,200px)]"
     >
-      <div className="tv-container grid gap-6 md:grid-cols-12 md:items-end" data-reveal-group>
-        <h2 id="projetos-tv" data-split className="tv-display text-[clamp(4rem,1.5rem+9vw,10rem)] md:col-span-8">
+      <div className="tv-container grid gap-10 md:grid-cols-12 md:items-center" data-reveal-group>
+        <h2 id="projetos-tv" data-split className="tv-display text-[clamp(4rem,1.5rem+9vw,10rem)] md:col-span-7">
           Projetos
         </h2>
-        <p data-reveal className="max-w-[34ch] text-lead leading-snug md:col-span-4">
-          Três projetos que construí. Ao lado de cada um, a tela real funcionando.
-        </p>
+        <div className="md:col-span-5">
+          <PcBuild />
+        </div>
       </div>
 
       <div className="tv-container mt-[clamp(56px,7vw,112px)] space-y-[clamp(72px,9vw,140px)]">
