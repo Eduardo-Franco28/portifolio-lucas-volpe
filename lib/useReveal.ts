@@ -16,14 +16,21 @@ export function useReveal(scope: RefObject<HTMLElement | null>) {
           type: "lines",
           mask: "lines",
           autoSplit: true,
-          onSplit: (self) =>
-            gsap.from(self.lines, {
+          onSplit: (self) => {
+            // A máscara corta o que passa da altura da linha: dá folga em cima e embaixo
+            // para acentos (Ó, Ç) e descendentes não sumirem nos títulos apertados.
+            (self.masks as HTMLElement[]).forEach((m) => {
+              m.style.padding = "0.18em 0";
+              m.style.margin = "-0.18em 0";
+            });
+            return gsap.from(self.lines, {
               yPercent: 105,
               duration: 0.9,
               ease: "expo.out",
               stagger: 0.09,
               scrollTrigger: { trigger: el, start: "top 85%", once: true },
-            }),
+            });
+          },
         });
       });
 

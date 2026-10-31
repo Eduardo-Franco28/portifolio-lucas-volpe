@@ -1,18 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { projects, type DemoKind } from "@/content/projects";
+import { projects } from "@/content/projects";
 import { useReveal } from "@/lib/useReveal";
 import PcBuild from "./PcBuild";
-import AppDemo from "@/components/demos/AppDemo";
-import BotDemo from "@/components/demos/BotDemo";
-import RealtimeDemo from "@/components/demos/RealtimeDemo";
+import { demos } from "@/components/demos";
 
-const demos: Record<DemoKind, () => React.JSX.Element> = {
-  app: AppDemo,
-  bot: BotDemo,
-  realtime: RealtimeDemo,
-};
 
 // Cada programa ganha uma cor das barras de teste.
 const tints = ["var(--blue)", "var(--cyan)", "var(--sky)"];
@@ -48,16 +41,21 @@ export default function Programs() {
               className="grid gap-x-10 gap-y-10 lg:grid-cols-12 lg:items-center"
               data-reveal-group
             >
-              <div className={`lg:col-span-5 ${i % 2 ? "lg:order-2 lg:col-start-8" : ""}`}>
+              <div className={`@container lg:col-span-5 ${i % 2 ? "lg:order-2 lg:col-start-8" : ""}`}>
                 <p data-reveal className="tv-mono flex flex-wrap items-center gap-x-3 gap-y-1 text-small">
                   <span className="font-semibold text-[var(--accent)]">
                     Projeto {i + 1} de {projects.length}
                   </span>
                   <span className="text-muted">
-                    {p.kind} · {p.year}
+                    {p.kind}
+                    {p.year ? ` · ${p.year}` : ""}
                   </span>
                 </p>
-                <h3 id={`prog-${p.slug}`} data-split className="tv-display mt-5 text-[clamp(3.5rem,1.5rem+6vw,7.5rem)]">
+                <h3
+                  id={`prog-${p.slug}`}
+                  data-split
+                  className="tv-display mt-5 break-words text-[clamp(2.5rem,15cqw,7.5rem)]"
+                >
                   {p.name}
                 </h3>
                 <p data-reveal className="mt-5 max-w-[44ch]">

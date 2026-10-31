@@ -1,89 +1,90 @@
-// Ícones desenhados para cada tecnologia (traço, 24×24). Todo elemento usa
-// pathLength=1 para que o CSS consiga "redesenhar" o traço no hover.
+// Ícones desenhados para cada habilidade (traço, 24×24), procurados pelo nome em
+// content/tech.ts. Todo elemento usa pathLength=1 para que o CSS consiga
+// "redesenhar" o traço no hover.
 const L = { pathLength: 1 } as const;
 
 const icons: Record<string, React.JSX.Element> = {
-  "React Native": (
+  "Manutenção de computadores": (
     <>
-      <rect {...L} x="6" y="2" width="12" height="20" rx="3" />
-      <ellipse {...L} cx="12" cy="11" rx="4.5" ry="1.9" />
-      <path {...L} d="M10.5 18.5h3" />
+      <path {...L} d="M14.7 4.3a4.2 4.2 0 0 0-5.3 5.3L3.5 15.5l3 3 5.9-5.9a4.2 4.2 0 0 0 5.3-5.3l-2.6 2.6-2.3-.7-.7-2.3Z" />
+      <circle {...L} cx="5.3" cy="17" r="0.6" />
     </>
   ),
-  Expo: (
+  "Montagem de PCs": (
     <>
-      <path {...L} d="M12 2.5c3 2 4.5 5.2 4.5 9.2L14.6 15H9.4l-1.9-3.3C7.5 7.7 9 4.5 12 2.5Z" />
-      <circle {...L} cx="12" cy="9.5" r="1.7" />
-      <path {...L} d="M9.6 15.5 8 20M14.4 15.5 16 20M12 16v5" />
+      <rect {...L} x="7" y="2.5" width="10" height="19" rx="1.8" />
+      <path {...L} d="M9.5 6.5h5M9.5 9.5h5" />
+      <circle {...L} cx="12" cy="16" r="1.8" />
     </>
   ),
-  "Node.js": (
+  "Suporte ao usuário": (
     <>
-      <path {...L} d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5Z" />
-      <path {...L} d="M9.2 15V9.2l5.6 5.6V9" />
+      <path {...L} d="M5 13v-1a7 7 0 0 1 14 0v1" />
+      <rect {...L} x="3.5" y="12.5" width="3.5" height="5.5" rx="1.2" />
+      <rect {...L} x="17" y="12.5" width="3.5" height="5.5" rx="1.2" />
+      <path {...L} d="M19 18c0 1.8-2 3-5 3h-1.5" />
     </>
   ),
-  Supabase: (
+  "Cisco Packet Tracer": (
     <>
-      <path {...L} d="M13.2 2.5 4.5 13.6h7l-1 7.9 8.9-11.3h-7Z" />
+      <ellipse {...L} cx="12" cy="8" rx="8.5" ry="3.2" />
+      <path {...L} d="M3.5 8v6.5c0 1.8 3.8 3.2 8.5 3.2s8.5-1.4 8.5-3.2V8" />
+      <path {...L} d="M8.5 8h7M13.5 6.5 15.5 8l-2 1.5" />
     </>
   ),
-  PostgreSQL: (
+  "Topologia de redes": (
     <>
-      <ellipse {...L} cx="12" cy="5.5" rx="7" ry="2.6" />
-      <path {...L} d="M5 5.5v13c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-13" />
-      <path {...L} d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6" />
+      <circle {...L} cx="12" cy="4.5" r="2.2" />
+      <circle {...L} cx="5" cy="18.5" r="2.2" />
+      <circle {...L} cx="19" cy="18.5" r="2.2" />
+      <path {...L} d="M12 6.7V11M12 11l-5.4 5.8M12 11l5.4 5.8" />
     </>
   ),
-  TypeScript: (
+  Wireshark: (
+    <>
+      <path {...L} d="M3 18c3 0 4-2 6-2s3 2 6 2 4-2 6-2" />
+      <path {...L} d="M7.5 15.5C8.7 9.5 12.5 5.2 17.5 4c-1.3 3.4-1.3 7.6.7 11.5" />
+    </>
+  ),
+  "Terminal Linux": (
+    <>
+      <rect {...L} x="3" y="4" width="18" height="16" rx="2.5" />
+      <path {...L} d="m7 10 3 2.5L7 15" />
+      <path {...L} d="M12.5 15H17" />
+    </>
+  ),
+  JavaScript: (
+    <>
+      <path {...L} d="M9 4C7 4 7 5.5 7 7s0 3.5-2 5c2 1.5 2 3.5 2 5s0 3 2 3" />
+      <path {...L} d="M15 4c2 0 2 1.5 2 3s0 3.5 2 5c-2 1.5-2 3.5-2 5s0 3-2 3" />
+    </>
+  ),
+  HTML: (
     <>
       <path {...L} d="M8 7 3 12l5 5" />
       <path {...L} d="m16 7 5 5-5 5" />
       <path {...L} d="M13.6 4.5 10.4 19.5" />
     </>
   ),
-  "Next.js": (
+  CSS: (
     <>
-      <rect {...L} x="3" y="4" width="18" height="16" rx="2.6" />
-      <path {...L} d="M3 8.6h18" />
-      <path {...L} d="m7.6 12.4 2.6 2.3-2.6 2.3M13 17h4" />
+      <path {...L} d="M12 3a9 9 0 1 0 0 18c1.6 0 2.1-1.1 1.5-2.1-.6-1.1 0-2.4 1.4-2.4h2.2a3.9 3.9 0 0 0 3.9-3.9C21 7 17 3 12 3Z" />
+      <circle {...L} cx="7.5" cy="11" r="1.2" />
+      <circle {...L} cx="10.5" cy="7" r="1.2" />
+      <circle {...L} cx="15" cy="7.5" r="1.2" />
     </>
   ),
-  React: (
+  Excel: (
     <>
-      <ellipse {...L} cx="12" cy="12" rx="9.5" ry="3.7" />
-      <ellipse {...L} cx="12" cy="12" rx="9.5" ry="3.7" transform="rotate(60 12 12)" />
-      <ellipse {...L} cx="12" cy="12" rx="9.5" ry="3.7" transform="rotate(120 12 12)" />
-      <circle {...L} cx="12" cy="12" r="1.5" />
+      <rect {...L} x="3" y="4" width="18" height="16" rx="2" />
+      <path {...L} d="M3 9.5h18M3 15h18M9 4v16" />
     </>
   ),
-  GSAP: (
+  Word: (
     <>
-      <path {...L} d="M3 18c4.5 0 4.5-12 9-12s4.5 12 9 12" />
-      <circle {...L} cx="12" cy="6" r="1.6" />
-      <path {...L} d="M3 21.5h18" />
-    </>
-  ),
-  "GitHub Actions": (
-    <>
-      <circle {...L} cx="6" cy="6" r="2.6" />
-      <circle {...L} cx="18" cy="18" r="2.6" />
-      <path {...L} d="M6 8.6V11a3.5 3.5 0 0 0 3.5 3.5H15" />
-      <path {...L} d="m12.6 11.8 2.7 2.7-2.7 2.7" />
-    </>
-  ),
-  Vercel: (
-    <>
-      <path {...L} d="M12 3.5 21 20H3Z" />
-      <path {...L} d="M12 10v4.5" />
-    </>
-  ),
-  Docker: (
-    <>
-      <path {...L} d="M2.5 12.5h16c1.2 0 2.1-.9 2.6-2 .4 3.4-1.8 9-9.6 9-5 0-8-3-9-7Z" />
-      <rect {...L} x="6" y="8.5" width="3" height="3" />
-      <rect {...L} x="9.5" y="8.5" width="3" height="3" />
-      <rect {...L} x="9.5" y="5" width="3" height="3" />
+      <path {...L} d="M6 3h8l4 4v14H6Z" />
+      <path {...L} d="M14 3v4h4" />
+      <path {...L} d="M9 12h6M9 15.5h6M9 19h4" />
     </>
   ),
 };

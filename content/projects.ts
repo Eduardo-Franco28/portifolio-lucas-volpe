@@ -1,14 +1,15 @@
 // Projetos: um objeto por projeto, na ordem em que aparecem.
-// `demo` escolhe qual interface animada acompanha o projeto (components/demos).
-// TODO: os três abaixo são exemplos de layout. Troque nome, texto e links.
+// `demo` escolhe qual tela animada acompanha o projeto (components/demos).
+// A topologia de rede do Packet Tracer tem a própria seção (components/site/Network.tsx).
+// TODO: confirme nome, ano, tecnologias e links de cada projeto.
 
-export type DemoKind = "app" | "bot" | "realtime";
+export type DemoKind = "lab" | "routine";
 
 export type Project = {
   slug: string;
   name: string;
   kind: string;
-  year: string;
+  year?: string;
   summary: string;
   stack: string[];
   links: { live?: string; github?: string };
@@ -17,36 +18,23 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "rota",
-    name: "Rota",
-    kind: "App mobile",
-    year: "2026",
+    slug: "laboratorios",
+    name: "Laboratórios", // TODO: nome do sistema
+    kind: "Sistema para o setor de TI",
     summary:
-      "App em React Native que organiza o dia de quem faz entregas: rota do dia, check-in em cada parada e funcionamento sem sinal.",
-    stack: ["React Native", "Expo", "Supabase", "TypeScript"],
-    links: { github: "https://github.com/TODO" },
-    demo: "app",
+      "Sistema para o setor de TI controlar os computadores dos laboratórios: quais máquinas estão livres, em uso ou em manutenção, e qual laboratório está reservado para cada aula.",
+    stack: ["JavaScript", "HTML", "CSS"], // TODO: confirme
+    links: {},
+    demo: "lab",
   },
   {
-    slug: "atende",
-    name: "Atende",
-    kind: "Bot de WhatsApp",
-    year: "2025",
+    slug: "rotina",
+    name: "Rotina", // TODO: nome do app
+    kind: "App para crianças autistas",
     summary:
-      "Atendimento automático no WhatsApp: entende o pedido, consulta o estoque na API e só chama um humano quando precisa.",
-    stack: ["Node.js", "WhatsApp Cloud API", "PostgreSQL"],
-    links: { github: "https://github.com/TODO" },
-    demo: "bot",
-  },
-  {
-    slug: "painel",
-    name: "Painel",
-    kind: "Web em tempo real",
-    year: "2025",
-    summary:
-      "Painel web que mostra pedidos chegando ao vivo, com Supabase Realtime e permissões por loja direto no banco.",
-    stack: ["Next.js", "Supabase Realtime", "Row Level Security"],
-    links: { live: "https://TODO", github: "https://github.com/TODO" },
-    demo: "realtime",
+      "Aplicativo para crianças autistas, com telas simples e a rotina do dia mostrada em imagens, uma etapa de cada vez.", // TODO: confirme o que o app faz
+    stack: ["JavaScript"], // TODO: confirme
+    links: {},
+    demo: "routine",
   },
 ];

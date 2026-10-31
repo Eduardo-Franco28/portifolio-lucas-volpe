@@ -2,19 +2,12 @@
 
 import { useEffect, useRef, useState, type FormEvent, type PointerEvent as RPointerEvent } from "react";
 import { profile } from "@/content/profile";
-import { projects, type DemoKind } from "@/content/projects";
+import { projects } from "@/content/projects";
 import { toggleTheme } from "@/lib/theme";
-import AppDemo from "@/components/demos/AppDemo";
-import BotDemo from "@/components/demos/BotDemo";
-import RealtimeDemo from "@/components/demos/RealtimeDemo";
+import { demos } from "@/components/demos";
 import LocalClock from "@/components/ui/LocalClock";
 import Fit from "./Fit";
 
-const demos: Record<DemoKind, () => React.JSX.Element> = {
-  app: AppDemo,
-  bot: BotDemo,
-  realtime: RealtimeDemo,
-};
 
 // Um "sistema operacional" de brinquedo dentro do monitor: ícones abrem janelas
 // com os projetos rodando, as janelas se arrastam, e o terminal aceita comandos.
@@ -22,7 +15,7 @@ const demos: Record<DemoKind, () => React.JSX.Element> = {
 type AppId = (typeof projects)[number]["slug"] | "terminal" | "leiame";
 type Win = { id: AppId; x: number; y: number; z: number }; // x/y em % da tela
 
-const iconTint = ["var(--blue-2)", "var(--cyan)", "#7ea2ff", "#0c1324", "#f2d900"];
+const iconTint = ["var(--blue-2)", "var(--cyan)", "#0c1324", "#f2d900"];
 
 const apps: { id: AppId; label: string; glyph: string }[] = [
   ...projects.map((p) => ({ id: p.slug as AppId, label: p.name, glyph: p.name.slice(0, 2) })),
@@ -50,8 +43,10 @@ function run(cmd: string, open: (id: AppId) => void): string[] {
       return [
         "comandos:",
         "  projetos       lista os projetos",
-        "  abrir <nome>   abre um projeto (ex.: abrir rota)",
-        "  stack          o que eu uso",
+        "  abrir <nome>   abre um projeto (ex.: abrir rotina)",
+        "  skills         o que eu sei fazer",
+        "  rede           vai para a topologia de rede",
+        "  ping           testa a conexão comigo",
         "  sobre          quem sou",
         "  contato        como falar comigo",
         "  tema           troca claro/escuro",
@@ -66,8 +61,18 @@ function run(cmd: string, open: (id: AppId) => void): string[] {
       open(p.slug as AppId);
       return [`abrindo ${p.name}…`];
     }
+    case "skills":
     case "stack":
       return [profile.stack.join(" · ")];
+    case "rede":
+      document.getElementById("rede")?.scrollIntoView({ behavior: "smooth" });
+      return ["indo para a topologia de rede…"];
+    case "ping":
+      return [
+        "PING lucas-volpe: 32 bytes de dados",
+        "resposta de lucas-volpe: tempo<1ms TTL=64",
+        "conexão ok. digite contato para falar comigo.",
+      ];
     case "sobre":
     case "whoami":
       return [`${profile.name} — ${profile.role}, ${profile.city}.`, profile.intro];
@@ -230,7 +235,7 @@ export default function Monitor() {
                     >
                       <span
                         className="grid size-8 place-items-center rounded-xl text-[11px] font-bold transition-transform group-hover:-translate-y-0.5 group-active:scale-90 sm:size-10 sm:text-[13px]"
-                        style={{ background: iconTint[i % iconTint.length], color: i === 4 ? "#0c1324" : "#fff" }}
+                        style={{ background: iconTint[i % iconTint.length], color: iconTint[i % iconTint.length] === "#f2d900" ? "#0c1324" : "#fff" }}
                       >
                         {a.glyph}
                       </span>

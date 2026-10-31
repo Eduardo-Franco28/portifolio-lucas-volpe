@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type PointerEvent } from "react";
-import { tech, studying } from "@/content/tech";
+import { tech } from "@/content/tech";
 import { useReveal } from "@/lib/useReveal";
 import SkillIcon from "./SkillIcon";
 
@@ -12,7 +12,7 @@ const glow = (e: PointerEvent<HTMLLIElement>) => {
   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
 
-// Skills: um card por tecnologia, com ícone desenhado que se refaz no hover.
+// Skills: um card por habilidade, com ícone desenhado que se refaz no hover.
 export default function Skills() {
   const root = useRef<HTMLElement>(null);
   useReveal(root);
@@ -38,11 +38,11 @@ export default function Skills() {
             Skills
           </p>
           <h2 id="skills-tv" data-split className="tv-display mt-5 text-[clamp(3.5rem,1.5rem+6vw,7.5rem)]">
-            Ferramentas do dia a dia
+            Do gabinete ao código
           </h2>
         </div>
         <p data-reveal className="max-w-[38ch] text-lead leading-snug text-[var(--muted)] md:col-span-5">
-          O que eu uso para tirar a ideia do papel, do app no celular ao deploy.
+          O que eu sei fazer, do parafuso da placa-mãe à linha de JavaScript. Passe o mouse em um card.
         </p>
       </div>
 
@@ -62,23 +62,6 @@ export default function Skills() {
           </li>
         ))}
       </ul>
-
-      <div className="tv-container relative mt-16" data-reveal-group>
-        <h3 data-reveal className="text-[1.25rem] font-bold">
-          Estudando agora
-        </h3>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-3">
-          {studying.map((s) => (
-            <li key={s.title} data-reveal className="flex items-center gap-4 rounded-[18px] bg-[var(--surface-2)] p-4">
-              <span className="live-dot size-2 shrink-0 rounded-full bg-[var(--blue-2)]" aria-hidden="true" />
-              <span>
-                <span className="block font-semibold">{s.title}</span>
-                <span className="block text-small text-[var(--muted)]">{s.note}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
     </section>
   );
 }

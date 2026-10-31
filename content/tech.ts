@@ -1,27 +1,69 @@
-// Tecnologias da seção Skills: uma por card, com a área em que se encaixa.
-// TODO: revise as descrições e a lista "estudando agora".
+// Habilidades da seção Skills: uma por card, com a área em que se encaixa.
+// O ícone de cada uma fica em components/site/SkillIcon.tsx (procurado pelo nome).
 
-export type Area = "Mobile" | "Backend" | "Web" | "DevOps";
+export type Area = "Hardware" | "Suporte" | "Redes" | "Sistemas" | "Web" | "Escritório";
 
-export type Tech = { name: string; area: Area; desc: string; mark: string };
+export type Tech = { name: string; area: Area; desc: string };
 
 export const tech: Tech[] = [
-  { name: "React Native", area: "Mobile", mark: "RN", desc: "Apps iOS e Android com uma base de código só." },
-  { name: "Expo", area: "Mobile", mark: "EX", desc: "Build, publicação nas lojas e atualizações OTA." },
-  { name: "Node.js", area: "Backend", mark: "NO", desc: "APIs, filas e integrações que aguentam o uso real." },
-  { name: "Supabase", area: "Backend", mark: "SB", desc: "Auth, Realtime e Postgres com regras de acesso no banco." },
-  { name: "PostgreSQL", area: "Backend", mark: "PG", desc: "Modelagem relacional e consultas em produção." },
-  { name: "TypeScript", area: "Web", mark: "TS", desc: "Tipagem do app à API, para errar no editor e não no usuário." },
-  { name: "Next.js", area: "Web", mark: "NX", desc: "Sites e painéis rápidos, com SEO e rotas de API." },
-  { name: "React", area: "Web", mark: "RE", desc: "Interfaces em componentes, com estado previsível." },
-  { name: "GSAP", area: "Web", mark: "GS", desc: "Animações e efeitos de scroll orquestrados em timeline." },
-  { name: "GitHub Actions", area: "DevOps", mark: "GA", desc: "Testes e deploy automáticos a cada pull request." },
-  { name: "Vercel", area: "DevOps", mark: "VC", desc: "Deploy com preview por branch e domínio próprio." },
-  { name: "Docker", area: "DevOps", mark: "DK", desc: "Ambientes iguais na máquina e no servidor." },
-];
-
-export const studying = [
-  { title: "Kubernetes", note: "Orquestração de containers" },
-  { title: "Testes E2E no mobile", note: "Detox e Maestro" },
-  { title: "IA aplicada", note: "LLMs em fluxos de produto" },
+  {
+    name: "Manutenção de computadores",
+    area: "Hardware",
+    desc: "Acho o defeito, troco a peça e devolvo a máquina ligando.",
+  },
+  {
+    name: "Montagem de PCs",
+    area: "Hardware",
+    desc: "Placa-mãe, processador, memória, armazenamento e fonte, cada um no seu lugar.", // TODO: confirme
+  },
+  {
+    name: "Suporte ao usuário",
+    area: "Suporte",
+    desc: "Atendo quem trabalha no computador quando ele para, como fazia no Colégio Rafael de Santo.",
+  },
+  {
+    name: "Cisco Packet Tracer",
+    area: "Redes",
+    desc: "Simulo roteadores, switches e access points antes de mexer no equipamento de verdade.",
+  },
+  {
+    name: "Topologia de redes",
+    area: "Redes",
+    desc: "Desenho como cada máquina se conecta: portas, cabos e Wi-Fi.",
+  },
+  {
+    name: "Wireshark",
+    area: "Redes",
+    desc: "Capturo e leio os pacotes para descobrir onde a rede está falhando.",
+  },
+  {
+    name: "Terminal Linux",
+    area: "Sistemas",
+    desc: "Navego, configuro e investigo a máquina pela linha de comando.",
+  },
+  {
+    name: "JavaScript",
+    area: "Web",
+    desc: "A lógica dos meus sistemas, como o controle dos laboratórios.",
+  },
+  {
+    name: "HTML",
+    area: "Web",
+    desc: "A estrutura das páginas, do formulário à tabela.",
+  },
+  {
+    name: "CSS",
+    area: "Web",
+    desc: "O layout e o visual das telas, no computador e no celular.",
+  },
+  {
+    name: "Excel",
+    area: "Escritório",
+    desc: "Planilhas de controle, fórmulas e relatórios.",
+  },
+  {
+    name: "Word",
+    area: "Escritório",
+    desc: "Documentos, relatórios e manuais de uso.",
+  },
 ];

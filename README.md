@@ -1,6 +1,6 @@
 # Portfólio · Lucas Volpe
 
-Portfólio pessoal de Lucas Volpe, desenvolvedor full-stack em São Paulo (React Native · Node.js · Supabase).
+Portfólio pessoal de Lucas Volpe, suporte de TI em São Paulo (hardware, redes e JavaScript).
 
 Next.js (App Router) · TypeScript · Tailwind CSS · GSAP (ScrollTrigger, SplitText) · Lenis.
 
@@ -18,8 +18,8 @@ Abra http://localhost:3000.
 Todo o texto do site fica em `content/`:
 
 - `content/profile.ts`: nome, título, status, textos do Sobre e do Contato, e-mail, links e foto
-- `content/projects.ts`: projetos (nome, descrição, stack, links e qual interface animada mostrar)
-- `content/tech.ts`: cards de Skills e a lista "Estudando agora"
+- `content/projects.ts`: projetos (nome, descrição, tecnologias, links e qual tela animada mostrar)
+- `content/tech.ts`: cards de Skills (o ícone de cada um fica em `components/site/SkillIcon.tsx`)
 
 A foto fica em `public/lucas.webp` e o currículo deve ir em `public/cv/lucas-volpe-cv.pdf`.
 

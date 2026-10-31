@@ -120,13 +120,13 @@ export default function Network() {
         <div>
           <p className="tv-label">
             <span className="live-dot size-2 rounded-full bg-[#2bc24a]" aria-hidden="true" />
-            Rede
+            Projeto · Redes
           </p>
           <h2 id="rede-tv" className="mt-5 text-[clamp(2.5rem,1.5rem+3.2vw,4.5rem)] font-bold leading-[1.04] tracking-[-0.035em]">
             Do roteador até o seu bolso
           </h2>
           <p className="mt-5 max-w-[42ch] text-lead leading-snug text-[var(--muted)]">
-            Todo app depende de uma rede funcionando por baixo. Role a página e veja os cabos se conectando, porta por porta.
+            Topologia que montei no Cisco Packet Tracer: um roteador, um switch 2960 e um access point levando Wi-Fi para celular, tablet e notebook. Role a página e veja cada porta subir.
           </p>
 
           <ol className="mt-10 grid gap-5">

@@ -5,9 +5,9 @@ import { profile } from "@/content/profile";
 import { gsap, useGSAP, markIntroDone } from "@/lib/gsap";
 
 // Tela de carregamento: o logo se desenha, o nome sobe letra por letra e a barra
-// enche passando pelas três etapas do "banco ao bolso". No fim, as duas metades
+// enche passando por três etapas de um computador ligando. No fim, as duas metades
 // da tela se abrem revelando o site. Cerca de 2,2 s.
-const steps = ["Conectando ao banco…", "Subindo a API…", "Abrindo o app…"];
+const steps = ["Ligando a fonte…", "Reconhecendo o hardware…", "Conectando à rede…"];
 
 export default function Boot() {
   const root = useRef<HTMLDivElement>(null);
