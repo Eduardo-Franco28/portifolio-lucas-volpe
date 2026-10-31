@@ -21,7 +21,7 @@ Todo o texto do site fica em `content/`:
 - `content/projects.ts`: projetos (nome, descrição, tecnologias, links e qual tela animada mostrar)
 - `content/tech.ts`: cards de Skills (o ícone de cada um fica em `components/site/SkillIcon.tsx`)
 
-A foto fica em `public/lucas.webp` e o currículo deve ir em `public/cv/lucas-volpe-cv.pdf`.
+A foto fica em `public/lucas-volpe.webp` e o currículo deve ir em `public/cv/lucas-volpe-cv.pdf`.
 
 ## Deploy
 

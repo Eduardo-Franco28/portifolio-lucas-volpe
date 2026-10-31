@@ -27,7 +27,7 @@ export const profile = {
   },
 
   // Foto 4:5 em public/. Para trocar, salve outra imagem e mude o src.
-  photo: { src: "/lucas.webp", alt: "Retrato de Lucas Volpe" } as null | { src: string; alt: string },
+  photo: { src: "/lucas-volpe.webp", alt: "Retrato de Lucas Volpe" } as null | { src: string; alt: string },
 
   about: {
     // Os trechos { mark } ganham destaque.
