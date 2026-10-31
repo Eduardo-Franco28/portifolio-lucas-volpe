@@ -123,8 +123,9 @@ export default function Network() {
       aria-labelledby="rede-tv"
       className="tv-panel flex items-center px-gutter py-[clamp(96px,12vw,200px)]"
     >
-      <div className="tv-container grid items-center gap-x-[clamp(32px,5vw,80px)] gap-y-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
-        <div>
+      {/* No celular a ordem é título, topologia e texto; no desktop o texto fica à esquerda e a topologia ocupa a coluna da direita. */}
+      <div className="tv-container grid items-center gap-x-[clamp(32px,5vw,80px)] gap-y-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-y-0">
+        <div className="order-1 lg:order-none lg:col-start-1 lg:row-start-1 lg:self-end">
           <p className="tv-label">
             <span className="live-dot size-2 rounded-full bg-[#2bc24a]" aria-hidden="true" />
             Como eu trabalho
@@ -132,7 +133,10 @@ export default function Network() {
           <h2 id="rede-tv" className="mt-5 text-[clamp(2.5rem,1.5rem+3.2vw,4.5rem)] font-bold leading-[1.04] tracking-[-0.035em]">
             Antes de mexer, eu entendo como tudo se conecta
           </h2>
-          <p className="mt-5 max-w-[42ch] text-lead leading-snug text-[var(--muted)]">
+        </div>
+
+        <div className="order-3 lg:order-none lg:col-start-1 lg:row-start-2 lg:self-start">
+          <p className="max-w-[42ch] text-lead lg:mt-5 leading-snug text-[var(--muted)]">
             É por isso que gosto tanto de hardware e de redes: dá para seguir o caminho inteiro, da peça dentro do gabinete até o Wi-Fi que chega no celular.
           </p>
 
@@ -149,7 +153,7 @@ export default function Network() {
           </ol>
         </div>
 
-        <figure className="net-stage mx-auto w-full max-w-[600px]">
+        <figure className="net-stage order-2 mx-auto w-full max-w-[600px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <svg
             viewBox="0 0 600 540"
             className="h-auto w-full"
