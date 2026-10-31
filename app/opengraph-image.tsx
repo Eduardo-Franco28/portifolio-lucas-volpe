@@ -50,7 +50,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 28, color: "#8e99b3" }}>
-          <span>{profile.role} · {profile.city}</span>
+          <span>{profile.role}</span>
           <span style={{ color: "#7ea2ff" }}>{profile.stack.join(" · ")}</span>
         </div>
       </div>

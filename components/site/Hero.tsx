@@ -60,7 +60,7 @@ export default function Hero() {
           {profile.status}
         </p>
 
-        <h1 className="mt-7 text-[clamp(2.75rem,1.4rem+3.8vw,5.25rem)] font-bold leading-[1.02] tracking-[-0.035em]">
+        <h1 className="mt-7 text-[clamp(2.6rem,1.2rem+3.3vw,4.6rem)] font-bold leading-[1.02] tracking-[-0.035em]">
           {before.split(" ").map((w, i) => (
             <span key={i} className="hero-word inline-block">
               {w}&nbsp;

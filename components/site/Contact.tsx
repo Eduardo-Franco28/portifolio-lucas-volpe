@@ -4,18 +4,27 @@ import { useRef } from "react";
 import { profile } from "@/content/profile";
 import { useReveal } from "@/lib/useReveal";
 import CopyEmail from "@/components/ui/CopyEmail";
+import HeroButton from "./HeroButton";
 
-// Contato: o painel azul de sempre, num tom mais calmo. Convite de um lado,
-// e-mail e links do outro.
+const mail = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="2.5" />
+    <path d="m4 7 8 6 8-6" />
+  </svg>
+);
+
+// Contato: painel azul com o convite de um lado e, do outro, o botão principal
+// (abre o e-mail já com assunto), copiar e-mail e os outros canais.
 export default function Contact() {
   const root = useRef<HTMLElement>(null);
   useReveal(root);
   const [user, domain] = profile.email.split("@");
+  const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(profile.contact.subject)}`;
 
   const links = [
     { href: profile.links.linkedin, label: "LinkedIn", external: true },
     { href: profile.links.github, label: "GitHub", external: true },
-    { href: profile.links.cv, label: "Currículo", external: false },
+    { href: profile.links.cv, label: "Baixar currículo", external: false },
   ];
 
   return (
@@ -37,40 +46,38 @@ export default function Contact() {
           >
             {profile.contact.title}
           </h2>
-          <p data-reveal className="mt-5 max-w-[38ch] text-lead leading-snug text-[var(--muted)]">
+          <p data-reveal className="mt-5 max-w-[40ch] text-lead leading-snug text-[var(--muted)]">
             {profile.contact.line}
           </p>
         </div>
 
         <div className="lg:col-span-6">
-          <p data-reveal className="text-small text-[var(--muted)]">
-            Escreva para
-          </p>
-          <a
-            data-reveal
-            href={`mailto:${profile.email}`}
-            className="mt-2 block break-words text-[clamp(1.75rem,1rem+2.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.02em] underline decoration-white/30 decoration-2 underline-offset-[8px] transition-[text-decoration-color] hover:decoration-white"
-          >
-            {user}
-            <wbr />@{domain}
-          </a>
-
-          <div data-reveal className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
-            <CopyEmail email={profile.email} className="rounded-full font-semibold" />
-            <ul className="flex flex-wrap gap-x-6 gap-y-2 font-semibold">
-              {links.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="underline decoration-2 underline-offset-[6px] hover:decoration-[var(--yellow)]"
-                    {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  >
-                    {l.label} ↗
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div data-reveal className="flex flex-wrap items-center gap-4">
+            <HeroButton href={mailto} label="Enviar e-mail" icon={mail} variant="light" />
+            <CopyEmail email={profile.email} className="rounded-full !bg-white/15 font-semibold !text-white hover:!bg-white/25" />
           </div>
+
+          <p data-reveal className="mt-8 text-small text-[var(--muted)]">
+            Ou escreva direto para{" "}
+            <a href={mailto} className="font-semibold text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
+              {user}
+              <wbr />@{domain}
+            </a>
+          </p>
+
+          <ul data-reveal className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-semibold">
+            {links.map((l) => (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  className="underline decoration-2 underline-offset-[6px] hover:decoration-[var(--yellow)]"
+                  {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {l.label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

@@ -7,16 +7,15 @@ export const profile = {
   name: "Lucas Volpe",
   initials: "LV",
   role: "Suporte de TI, hardware e redes",
-  city: "São Paulo",
-  timeZone: "America/Sao_Paulo",
+  timeZone: "America/Sao_Paulo", // só para o relógio do monitor; não aparece escrito
   status: "Aberto a vagas de suporte de TI e redes", // TODO: confirme se está procurando vaga
 
   // Título do hero: a palavra destacada ganha cor e um traço desenhado embaixo.
-  headline: { before: "Abro o gabinete, passo o cabo e deixo a rede no", highlight: "ar" },
+  headline: { before: "Do hardware à rede, mantenho tudo", highlight: "funcionando" },
   intro:
-    "Faço suporte de TI em São Paulo. Monto e conserto computadores, desenho redes no Cisco Packet Tracer e escrevo em JavaScript as ferramentas que o setor de TI precisa.",
+    "Trabalho com suporte de TI. Monto e conserto computadores, desenho redes no Cisco Packet Tracer e uso JavaScript para criar as ferramentas que o setor de TI precisa.",
   stack: ["Hardware", "Redes", "Suporte de TI"],
-  // Frase curta do rodapé (sem cidade).
+  // Frase curta do rodapé.
   tagline:
     "Monto e conserto computadores, desenho redes no Cisco Packet Tracer e escrevo em JavaScript as ferramentas que o setor de TI precisa.",
 
@@ -33,30 +32,30 @@ export const profile = {
   about: {
     // Os trechos { mark } ganham destaque.
     body: [
-      "Sou o Lucas, de ",
-      { mark: "São Paulo" },
-      ". Minha parte preferida da TI é o ",
+      "Sou o Lucas. Minha parte preferida da TI é o ",
       { mark: "hardware" },
-      ": abrir o gabinete, achar a peça com defeito e devolver a máquina ligando. Também gosto de software e uso ",
-      { mark: "JavaScript" },
-      " quando o problema pede um sistema. Fui estagiário de ",
-      { mark: "suporte de TI" },
+      ": abrir o gabinete, achar a peça com defeito e devolver a máquina ligando. Fiz ",
+      { mark: "estágio de suporte de TI" },
       " no ",
       { mark: "Colégio Rafael de Santo" },
-      ", cuidando dos computadores da escola e de quem trabalha neles.",
+      ", cuidando dos computadores da escola e das pessoas que dependem deles no dia a dia. Também gosto de software e uso ",
+      { mark: "JavaScript" },
+      " quando o problema pede um sistema.",
     ] as Rich,
   },
 
   // Card de experiência no Sobre mim.
   // TODO: confirme o período.
   experience: {
-    role: "Estagiário de Suporte de TI",
+    role: "Estágio em Suporte de TI",
     place: "Colégio Rafael de Santo",
     period: "", // ex.: "2025 – 2026". Vazio, não aparece.
   },
 
   contact: {
-    title: "Tem uma vaga ou uma máquina parada?",
-    line: "Conta o que está acontecendo e eu te respondo por e-mail.",
+    title: "Tem uma vaga de suporte de TI?",
+    line: "Me manda os detalhes da vaga, ou do computador que parou, e eu te respondo por e-mail.",
+    // Assunto que já vem preenchido quando a pessoa clica em "Enviar e-mail".
+    subject: "Contato pelo portfólio",
   },
 };

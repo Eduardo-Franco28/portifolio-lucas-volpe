@@ -75,7 +75,7 @@ function run(cmd: string, open: (id: AppId) => void): string[] {
       ];
     case "sobre":
     case "whoami":
-      return [`${profile.name} — ${profile.role}, ${profile.city}.`, profile.intro];
+      return [`${profile.name} — ${profile.role}.`, profile.intro];
     case "contato":
       return [profile.email, profile.links.linkedin, profile.links.github];
     case "tema":
@@ -148,7 +148,7 @@ function ReadMe() {
     <div data-lenis-prevent className="h-full overflow-y-auto bg-[#fbfcff] p-4 text-[13px] leading-relaxed text-[#0c1324]">
       <p className="text-[15px] font-bold">{profile.name}</p>
       <p className="text-[#56617a]">
-        {profile.role} · {profile.city}
+        {profile.role}
       </p>
       <p className="mt-3">{profile.intro}</p>
       <p className="mt-3 text-[#56617a]">Dica: abra o Terminal e digite help.</p>

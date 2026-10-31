@@ -200,6 +200,19 @@ html[data-theme="dark"]:has(.tv) {
   --icon-bg-hover: #ffffff;
   --icon-ink-hover: var(--blue);
 }
+/* Botão branco para fundos azuis (contato): enche de amarelo no hover. */
+.tv .hero-btn--light {
+  background: #ffffff;
+  color: var(--blue);
+  --fill: var(--red);
+  --fill-ink: #ffffff;
+  --icon-bg: var(--blue);
+  --icon-bg-hover: #0c1324;
+  --icon-ink-hover: #ffffff;
+}
+.tv .hero-btn--light .hero-btn__icon {
+  color: #ffffff;
+}
 .tv .hero-btn__fill {
   position: absolute;
   left: var(--x, 50%);

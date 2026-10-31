@@ -14,7 +14,7 @@ export default function HeroButton({
   href: string;
   label: string;
   icon: ReactNode;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "light";
 }) {
   const track = (e: PointerEvent<HTMLAnchorElement>) => {
     const r = e.currentTarget.getBoundingClientRect();

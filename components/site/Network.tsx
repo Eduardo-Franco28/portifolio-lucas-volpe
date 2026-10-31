@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
-// Topologia de rede no estilo Packet Tracer: Roteador → Switch 2960 → Access Point
+// "Como eu trabalho": o jeito do Lucas resolver problemas, ao lado de uma topologia
+// de rede no estilo Packet Tracer: Roteador → Switch 2960 → Access Point
 // → celular, tablet e notebook. Conforme a página rola, cada cabo se desenha, as
 // portas passam de vermelho para verde, o Wi-Fi conecta os aparelhos e, no fim,
 // pacotes começam a correr pelos cabos. Acontece uma vez só, na primeira descida.
@@ -11,10 +12,10 @@ import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 const L = { pathLength: 1, strokeDasharray: 1, strokeDashoffset: 1 } as const;
 
 const steps = [
-  { title: "O roteador liga na internet", text: "Router0 sobe a porta Gig0/0. É por aqui que tudo entra e sai." },
-  { title: "O switch distribui a rede", text: "Um cabo de Gig0/1 ao Switch 2960, que entrega a rede pela Fa0/1." },
-  { title: "O access point leva ao ar", text: "O AccessPoint0 transforma o cabo em Wi-Fi para quem está por perto." },
-  { title: "Tudo conectado, até o seu bolso", text: "Celular, tablet e notebook entram na rede, e os dados começam a fluir." },
+  { title: "Começo pelo hardware", text: "Abro, testo e troco o que estiver com defeito. Manutenção é onde eu tenho mais prática." },
+  { title: "Desenho a rede antes de montar", text: "Planejo portas, cabos e Wi-Fi no Cisco Packet Tracer antes de mexer no equipamento." },
+  { title: "Investigo quando algo falha", text: "Uso o Wireshark e o terminal Linux para ver em que ponto a conexão para." },
+  { title: "Crio a ferramenta que falta", text: "Quando o mesmo problema volta, escrevo um sistema em JavaScript, como o controle dos laboratórios." },
 ];
 
 // Linha de Wi-Fi em zigue-zague entre dois pontos, como o Packet Tracer desenha.
@@ -126,13 +127,13 @@ export default function Network() {
         <div>
           <p className="tv-label">
             <span className="live-dot size-2 rounded-full bg-[#2bc24a]" aria-hidden="true" />
-            Projeto · Redes
+            Como eu trabalho
           </p>
           <h2 id="rede-tv" className="mt-5 text-[clamp(2.5rem,1.5rem+3.2vw,4.5rem)] font-bold leading-[1.04] tracking-[-0.035em]">
-            Do roteador até o seu bolso
+            Antes de mexer, eu entendo como tudo se conecta
           </h2>
           <p className="mt-5 max-w-[42ch] text-lead leading-snug text-[var(--muted)]">
-            Topologia que montei no Cisco Packet Tracer: um roteador, um switch 2960 e um access point levando Wi-Fi para celular, tablet e notebook. Role a página e veja cada porta subir.
+            É por isso que gosto tanto de hardware e de redes: dá para seguir o caminho inteiro, da peça dentro do gabinete até o Wi-Fi que chega no celular.
           </p>
 
           <ol className="mt-10 grid gap-5">
@@ -234,6 +235,9 @@ export default function Network() {
             <Label x={300} y={532}>TabletPC0</Label>
             <Label x={502} y={532}>Laptop0</Label>
           </svg>
+          <figcaption className="mt-3 text-center text-small text-[var(--muted)]">
+            Uma topologia que montei no Cisco Packet Tracer.
+          </figcaption>
         </figure>
       </div>
     </section>
