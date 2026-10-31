@@ -5,6 +5,7 @@ import { projects } from "@/content/projects";
 import { useReveal } from "@/lib/useReveal";
 import PcBuild from "./PcBuild";
 import { demos } from "@/components/demos";
+import ProjectShot from "./ProjectShot";
 
 
 // Cada programa ganha uma cor das barras de teste.
@@ -91,8 +92,8 @@ export default function Programs() {
                 }`}
                 style={{ backgroundColor: tints[i % tints.length] }}
               >
-                <div data-fx-parallax="-10">
-                  <Demo />
+                <div data-fx-parallax="-10" className="flex w-full justify-center">
+                  {p.shot ? <ProjectShot shot={p.shot} /> : <Demo />}
                 </div>
               </div>
             </article>
