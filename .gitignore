@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design inspector
+/.taste-skill
+
+# configuração local do editor
+/.claude
