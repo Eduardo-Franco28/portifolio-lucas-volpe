@@ -53,7 +53,7 @@ export const profile = {
   },
 
   contact: {
-    title: "Precisa de alguém que mantenha tudo funcionando?",
+    title: "Vamos conversar sobre a sua TI?",
     line: "Me manda um e-mail contando o que você precisa. Também estou no LinkedIn e no GitHub.",
     // Assunto que já vem preenchido quando a pessoa clica em "Enviar e-mail".
     subject: "Contato pelo portfólio",
